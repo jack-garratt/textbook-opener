@@ -1,20 +1,7 @@
-from playwright.sync_api import sync_playwright
-from login_page import LoginPage
-from navigator import Navigator
-from find_textbook import FindTextbook
-import time
+import browser
+from dotenv import load_dotenv
 
-def run():
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, args=["--start-maximized"])
-        context = browser.new_context(no_viewport=True)
-        page = context.new_page()
-        page.goto("https://www.pearsonactivelearn.com/app/login")
-        nav = Navigator(page)
-        login = LoginPage(nav)
-        find = FindTextbook(nav)
-        login.login()
-        login.reject_cookies()          
-        find.select_textbook("Applied Maths Year 2")
-        time.sleep(50)
-run()
+
+load_dotenv(override=True)
+textbook = "Physics Year 2"
+browser.run(textbook)

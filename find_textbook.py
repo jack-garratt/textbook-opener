@@ -2,19 +2,30 @@ import yaml
 
 class FindTextbook():
     def __init__(self, navigator):
-        self.__navigator = navigator
+        self._navigator = navigator
+        self._textbooks = self._get_textbooks()
+
+    def _get_textbooks(self):
         with open("config.yaml") as config:
             try:
-                self.__textbooks = yaml.safe_load(config)
+                textbooks = yaml.safe_load(config)
             except yaml.YAMLError as exc:
                 print(exc) 
-    
-    def get_textbooks(self):
-        textbooks = []
-        for textbook in self.__textbooks:
-            textbooks.append(textbook)
+                textbooks = {}
         return textbooks
 
+
     def select_textbook(self, textbook):
-        self.__navigator.click_link(self.__textbooks[textbook]["subject"])
-        self.__navigator.click_link(self.__textbooks[textbook]["name"])
+        self._navigator.click_link(self._textbooks[textbook]["subject"])
+        self._navigator.click_link(self._textbooks[textbook]["name"])
+
+
+def get_textbooks_list():
+    with open("config.yaml") as config:
+        try:
+            textbooks = list((yaml.safe_load(config)).keys())
+        except yaml.YAMLError as exc:
+            print(exc) 
+            textbooks = []
+    return textbooks
+
