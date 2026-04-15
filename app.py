@@ -2,7 +2,11 @@ import browser
 from dotenv import load_dotenv
 import customtkinter
 import sys
+import os
+from paths import get_resource
 FONT = "CALIBRI"
+load_dotenv(get_resource(".env"), override=True)
+os.environ['PLAYWRIGHT_BROWSERS_PATH'] = '0'
 
 class TextbookButton(customtkinter.CTkFrame):
     def __init__(self,master,textbook_name, **kwargs):
@@ -59,7 +63,7 @@ def open_textbook(textbook):
     sys.exit()
     
 
-load_dotenv(override=True)
+
 app = App()
 app.mainloop()
 

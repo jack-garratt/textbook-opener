@@ -6,7 +6,7 @@ import time
 
 def run(textbook):
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, args=["--start-maximized"])
+        browser = p.chromium.launch(channel="chrome", headless=False, args=["--start-maximized"])
         context = browser.new_context(no_viewport=True)
         page = context.new_page()
         page.goto("https://www.pearsonactivelearn.com/app/login")

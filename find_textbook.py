@@ -1,4 +1,5 @@
 import yaml
+from paths import get_resource
 
 class FindTextbook():
     def __init__(self, navigator):
@@ -6,7 +7,7 @@ class FindTextbook():
         self._textbooks = self._get_textbooks()
 
     def _get_textbooks(self):
-        with open("config.yaml") as config:
+        with open(get_resource("config.yaml")) as config:
             try:
                 textbooks = yaml.safe_load(config)
             except yaml.YAMLError as exc:
@@ -21,7 +22,7 @@ class FindTextbook():
 
 
 def get_textbooks_list():
-    with open("config.yaml") as config:
+    with open(get_resource("config.yaml")) as config:
         try:
             textbooks = list((yaml.safe_load(config)).keys())
         except yaml.YAMLError as exc:
