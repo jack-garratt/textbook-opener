@@ -16,7 +16,9 @@ def run(textbook):
         login.login()
         login.reject_cookies()          
         find.select_textbook(textbook)
-        input() #Freezes page so it dosent close
+        page.wait_for_event("close") 
+        browser.close()
+        return
 
 def get_textbooks():
     return(get_textbooks_list())
