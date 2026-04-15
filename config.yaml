@@ -1,16 +1,15 @@
-textbooks: 
-  Physics Year 2:
-    subject:
-    name:
-  Pure Maths Year 1:
-    subject:
-    name:
-  Pure Maths Year 2:
-    subject:
-    name:
-  Applied Maths Year 1:
-    subject:
-    name:
-  Applied Maths Year 2:
-    subject:
-    name:
+Physics Year 2:
+  subject: Physics
+  name: ActiveBook 2
+Pure Maths Year 1:
+  subject:
+  name:
+Pure Maths Year 2:
+  subject:
+  name:
+Applied Maths Year 1:
+  subject:
+  name:
+Applied Maths Year 2:
+  subject:
+  name:

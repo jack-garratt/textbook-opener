@@ -7,4 +7,4 @@ class FindTextbook():
             try:
                 self.__textbooks = yaml.safe_load(config)
             except yaml.YAMLError as exc:
-                print(exc)
+                print(exc) 
