@@ -16,7 +16,7 @@ def run(textbook):
         login.login()
         login.reject_cookies()          
         find.select_textbook(textbook)
-        page.wait_for_event("close") 
+        page.wait_for_event("close", timeout=0) 
         browser.close()
         return
 
