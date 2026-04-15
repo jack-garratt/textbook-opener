@@ -6,13 +6,15 @@ import time
 
 def run():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
-        page = browser.new_page()
+        browser = p.chromium.launch(headless=False, args=["--start-maximized"])
+        context = browser.new_context(no_viewport=True)
+        page = context.new_page()
         page.goto("https://www.pearsonactivelearn.com/app/login")
         nav = Navigator(page)
         login = LoginPage(nav)
         find = FindTextbook(nav)
         login.login()
-        login.reject_cookies()
+        login.reject_cookies()          
+        find.select_textbook("Applied Maths Year 2")
         time.sleep(50)
 run()
